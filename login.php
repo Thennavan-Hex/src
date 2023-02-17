@@ -2,7 +2,7 @@
 session_start(); 
 include "db_conn.php";
 
-if (isset($_POST['cid']) && isset($_POST['password'])) {
+if (isset($_POST['cid'])) {
 
 	function validate($data){
        $data = trim($data);
@@ -18,14 +18,13 @@ if (isset($_POST['cid']) && isset($_POST['password'])) {
 	    exit();
 	}else{
 
-		$sql = "SELECT * FROM users WHERE user_name='$cid'";
+		$sql = "SELECT * FROM users WHERE cid='$cid'";
 
 		$result = mysqli_query($conn, $sql);
 
 		if (mysqli_num_rows($result) === 1) {
 			$row = mysqli_fetch_assoc($result);
             if ($row['cid'] === $cid) {
-
             	header("Location: index.php?success=It is a Valid Certificate ✔ ");
 		        exit();
             }else{

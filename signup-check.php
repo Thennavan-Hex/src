@@ -2,8 +2,7 @@
 session_start(); 
 include "db_conn.php";
 
-if (isset($_POST['cid']) && isset($_POST['password'])
-    && isset($_POST['name']) && isset($_POST['re_password'])) {
+if (isset($_POST['cid'])) {
 
 	function validate($data){
        $data = trim($data);
@@ -44,9 +43,6 @@ if (isset($_POST['cid']) && isset($_POST['password'])
 	}
 
 	else{
-
-		// hashing the password
-        $pass = md5($pass);
 
 	    $sql = "SELECT * FROM users WHERE user_name='$cid' ";
 		$result = mysqli_query($conn, $sql);
