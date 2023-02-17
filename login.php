@@ -25,14 +25,12 @@ if (isset($_POST['cid'])) {
 		if (mysqli_num_rows($result) === 1) {
 			$row = mysqli_fetch_assoc($result);
             if ($row['cid'] === $cid) {
-            	header("Location: index.php?error=It is a Valid Certificate ✔");
+            	echo '<script>alert("Valid certificate")</script>';
 		        exit();
-            }else{
-				header("Location: index.php?error=Incorect Certificate ID");
-		        exit();
-			}
+            }
+			
 		}else{
-			header("Location: index.php?error=Incorect Certificate ID");
+			echo '<script>alert("In valid  certificate")</script>';
 	        exit();
 		}
 	}
